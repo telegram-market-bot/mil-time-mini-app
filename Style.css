@@ -1,0 +1,5 @@
+body { background-color: #000; color: #fff; font-family: Arial; } /* Камуфляж-тема */
+.carousel { display: flex; overflow-x: auto; } /* Карусель ракурсов */
+img { width: 100px; margin: 5px; }
+button { background: green; color: white; border: none; padding: 10px; }
+#filters select { margin: 5px; }

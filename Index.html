@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mil Time Shop</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Mil Time: Милитари Шоп</h1>
+    <select id="language">
+      <option value="ru">RU</option>
+      <option value="ua">UA</option>
+      <option value="en">EN</option>
+    </select>
+  </header>
+  <section id="filters">
+    <select id="category"><option>Категория</option></select>
+    <select id="season"><option>Сезон</option></select>
+    <select id="color"><option>Цвет</option></select>
+    <select id="size"><option>Размер</option></select>
+  </section>
+  <section id="catalog"></section>
+  <section id="cart">
+    <h2>Корзина</h2>
+    <div id="cart-items"></div>
+    <p>Итого: <span id="total">0 ₴</span></p>
+    <button id="checkout">Оформить заказ</button>
+  </section>
+  <div id="chat-bot">Чат с ИИ: <input id="question" placeholder="Вопрос?"><button id="ask">Спросить</button></div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -6,6 +6,7 @@ body {
   padding: 0;
 }
 
+/* header */
 .header {
   background: #1a1a1a;
   padding: 10px 20px;
@@ -15,67 +16,105 @@ body {
   border-bottom: 2px solid #3b5e2b;
 }
 
-.logo {
+/* logo */
+.logo-wrap {
   display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  width: 80px; /* змінюй під потрібний розмір */
+  height: auto;
+  border-radius: 8px;
+}
+
+.brand-text {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.mini {
+  font-size: 0.85rem;
+  color: #9fb08a;
+  margin-left: 6px;
+}
+
+/* controls */
+.controls {
+  display: flex;
+  gap: 10px;
   align-items: center;
 }
 
-.logo img {
-  width: 50px;
-  margin-right: 10px;
-}
-
-.navbar button {
-  background: #3b5e2b;
-  border: none;
-  padding: 8px 12px;
-  margin: 0 5px;
-  color: white;
+.controls select {
+  padding: 6px 8px;
   border-radius: 6px;
-  cursor: pointer;
-  transition: 0.3s;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: #121212;
+  color: #fff;
 }
 
-.navbar button:hover {
-  background: #4b7234;
-}
-
-.filters {
+/* filterbar */
+.filterbar {
   display: flex;
-  gap: 10px;
-  padding: 15px;
-  justify-content: center;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  background: #0f0f0f;
+  overflow-x: auto;
 }
 
-.filters select {
-  padding: 8px;
-  border-radius: 6px;
-  border: none;
-  background: #1a1a1a;
-  color: white;
-  border: 1px solid #3b5e2b;
-}
+.filter-col { min-width: 160px; }
 
+/* chips (filter buttons) */
+.chips { margin-top: 6px; display:flex; flex-wrap:wrap; gap:8px; }
+.chip {
+  background: #171717;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.chip.active { background: #3b5e2b; color: #fff; border-color: rgba(255,255,255,0.06); }
+
+/* content */
+.content { padding: 12px; }
+
+#catalog-title { margin: 0 0 12px 0; }
+
+/* product grid */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 16px;
-  padding: 20px;
+  padding-bottom: 30px;
 }
 
 .product-card {
   background: #111;
   border-radius: 12px;
-  padding: 15px;
-  text-align: center;
+  padding: 12px;
+  text-align: left;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
 }
 
 .product-card img {
   width: 100%;
+  height: 160px;
+  object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 10px;
 }
+
+.product-card h3 { margin: 4px 0 0 0; font-size: 16px; color: #efe7dc; }
+.product-card p { margin: 0; font-size: 13px; color: rgba(255,255,255,0.8); }
+
+.meta-row { display:flex; justify-content:space-between; align-items:center; margin-top:8px; }
 
 .buy-btn {
   background-color: #3b5e2b;
@@ -84,33 +123,38 @@ body {
   border-radius: 6px;
   padding: 8px 12px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s;
 }
+.buy-btn.gray { background: #333; color: #fff; }
+.buy-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
 
-.buy-btn:hover {
-  background-color: #4b7234;
-}
-
+/* modal */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.6);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 999;
 }
 
-.modal.hidden {
-  display: none;
-}
+.modal.hidden { display: none; }
 
 .modal-content {
-  background: #1a1a1a;
-  padding: 20px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 500px;
+  background: #121212;
+  padding: 16px;
+  border-radius: 12px;
+  width: 92%;
+  max-width: 560px;
+}
+
+/* small screen adjustments */
+@media (max-width: 520px) {
+  .logo-img { width: 58px; }
+  .product-card img { height: 140px; }
+  .filter-col { min-width: 120px; }
 }

@@ -9,44 +9,65 @@
 <body>
   <header class="header">
     <div class="logo-wrap">
-      <img src="https://drive.google.com/file/d/1M9Ri-_-ljs_M-8gok0rwZloBAcL2haDT/view?usp=drivesdk" alt="Mil Time" class="logo" />
+      <img 
+        src="https://i.ibb.co/8gc0ZcV4/file-00000000f89861f79ed5069a2301b110.png" 
+        alt="Mil Time Logo" 
+        class="logo-img"
+      />
       <div class="brand-text">Mil Time</div>
       <div class="mini">Mini App</div>
     </div>
 
     <div class="controls">
-      <select id="langSelect" onchange="changeLanguage(this.value)">
+      <select id="langSelect">
         <option value="ua">Українська</option>
         <option value="en">English</option>
         <option value="ru">Русский</option>
       </select>
-      <button onclick="showCart()" class="cart-btn">🛒 <span id="cartCount">0</span></button>
+      <button id="cart-btn" class="cart-btn">🛒 <span id="cartCount">0</span></button>
     </div>
   </header>
 
   <nav class="filterbar">
     <div class="filter-col">
-      <label>Категорії</label>
+      <label for="categories-label" id="label-categories">Категорії</label>
       <div id="categories" class="chips"></div>
     </div>
+
     <div class="filter-col">
-      <label>Сезон</label>
+      <label for="seasons-label" id="label-seasons">Сезон</label>
       <div id="seasons" class="chips"></div>
     </div>
+
     <div class="filter-col">
-      <label>Кольори</label>
+      <label for="colors-label" id="label-colors">Кольори</label>
       <div id="colors" class="chips"></div>
     </div>
+
     <div class="filter-col">
-      <label>Розміри</label>
+      <label for="sizes-label" id="label-sizes">Розміри</label>
       <div id="sizes" class="chips"></div>
     </div>
   </nav>
 
-  <main id="content" class="content"></main>
+  <main id="content" class="content">
+    <section id="catalog">
+      <h2 id="catalog-title">Каталог товарів</h2>
+      <div id="product-list" class="product-grid"></div>
+    </section>
+  </main>
 
-  <!-- Cart & Checkout modal -->
-  <div id="modal" class="modal hidden"></div>
+  <!-- Cart modal -->
+  <div id="cart-modal" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="cart-title">Кошик</h3>
+      <div id="cart-items"></div>
+      <div style="display:flex;gap:8px;margin-top:12px;justify-content:flex-end;">
+        <button id="checkout-btn" class="buy-btn">Оформити</button>
+        <button id="close-cart" class="buy-btn gray">Закрити</button>
+      </div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>

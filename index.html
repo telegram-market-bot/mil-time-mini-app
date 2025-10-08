@@ -9,13 +9,11 @@
 <body>
   <header class="header">
     <div class="logo-wrap">
-      <img 
-        src="https://i.ibb.co/8gc0ZcV4/file-00000000f89861f79ed5069a2301b110.png" 
-        alt="Mil Time Logo" 
-        class="logo-img"
-      />
-      <div class="brand-text">Mil Time</div>
-      <div class="mini">Mini App</div>
+      <img src="https://i.ibb.co/8gc0ZcV4/file-00000000f89861f79ed5069a2301b110.png" alt="Mil Time" class="logo-img" />
+      <div class="brand-text">
+        <div class="brand-name">Mil Time</div>
+        <div class="mini">Mini App</div>
+      </div>
     </div>
 
     <div class="controls">
@@ -29,26 +27,43 @@
   </header>
 
   <nav class="filterbar">
-    <div class="filter-col">
-      <label for="categories-label" id="label-categories">Категорії</label>
-      <div id="categories" class="chips"></div>
-    </div>
+    <button id="categoryToggle" class="filter-btn">📂 Категорії</button>
+    <button id="filterToggle" class="filter-btn">🔍 Фільтр пошуку</button>
+  </nav>
 
-    <div class="filter-col">
-      <label for="seasons-label" id="label-seasons">Сезон</label>
+  <div id="categoryPanel" class="filter-panel hidden"></div>
+
+  <div id="filterPanel" class="filter-panel hidden">
+    <div class="filter-group">
+      <label>Сезон</label>
       <div id="seasons" class="chips"></div>
     </div>
 
-    <div class="filter-col">
-      <label for="colors-label" id="label-colors">Кольори</label>
+    <div class="filter-group">
+      <label>Кольори</label>
       <div id="colors" class="chips"></div>
     </div>
 
-    <div class="filter-col">
-      <label for="sizes-label" id="label-sizes">Розміри</label>
+    <div class="filter-group">
+      <label>Розміри</label>
       <div id="sizes" class="chips"></div>
     </div>
-  </nav>
+
+    <div class="filter-group">
+      <label>Ціна (грн)</label>
+      <div class="price-range">
+        <input id="priceMin" type="number" placeholder="Мін" />
+        <input id="priceMax" type="number" placeholder="Макс" />
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <label>Пошук</label>
+      <input id="searchInput" type="text" placeholder="Введіть назву..." />
+    </div>
+
+    <button id="applyFilters" class="buy-btn">✅ Застосувати</button>
+  </div>
 
   <main id="content" class="content">
     <section id="catalog">
@@ -62,9 +77,21 @@
     <div class="modal-content">
       <h3 id="cart-title">Кошик</h3>
       <div id="cart-items"></div>
-      <div style="display:flex;gap:8px;margin-top:12px;justify-content:flex-end;">
+      <div class="modal-actions">
         <button id="checkout-btn" class="buy-btn">Оформити</button>
         <button id="close-cart" class="buy-btn gray">Закрити</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery modal -->
+  <div id="photo-modal" class="modal hidden">
+    <div class="modal-content gallery">
+      <button class="close-btn" onclick="closeGallery()">×</button>
+      <img id="gallery-photo" src="" alt="Фото товару" />
+      <div class="gallery-nav">
+        <button onclick="prevPhoto()">⟨</button>
+        <button onclick="nextPhoto()">⟩</button>
       </div>
     </div>
   </div>

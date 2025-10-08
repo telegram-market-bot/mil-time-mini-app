@@ -1,3 +1,4 @@
+/* Загальні */
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: #0d0d0d;
@@ -6,17 +7,17 @@ body {
   padding: 0;
 }
 
-/* header */
+/* Header */
 .header {
   background: #1a1a1a;
-  padding: 10px 20px;
+  padding: 10px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 2px solid #3b5e2b;
 }
 
-/* logo */
+/* Logo */
 .logo-wrap {
   display: flex;
   align-items: center;
@@ -24,13 +25,20 @@ body {
 }
 
 .logo-img {
-  width: 80px; /* змінюй під потрібний розмір */
-  height: auto;
-  border-radius: 8px;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
 }
 
 .brand-text {
-  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.0;
+}
+
+.brand-name {
+  font-size: 1.3rem;
   font-weight: 700;
   color: #fff;
 }
@@ -38,17 +46,17 @@ body {
 .mini {
   font-size: 0.85rem;
   color: #9fb08a;
-  margin-left: 6px;
+  margin-top: 2px;
 }
 
-/* controls */
+/* Controls */
 .controls {
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
-.controls select {
+select {
   padding: 6px 8px;
   border-radius: 6px;
   border: 1px solid rgba(255,255,255,0.06);
@@ -56,7 +64,7 @@ body {
   color: #fff;
 }
 
-/* filterbar */
+/* Filter bar */
 .filterbar {
   display: flex;
   gap: 12px;
@@ -67,8 +75,6 @@ body {
 }
 
 .filter-col { min-width: 160px; }
-
-/* chips (filter buttons) */
 .chips { margin-top: 6px; display:flex; flex-wrap:wrap; gap:8px; }
 .chip {
   background: #171717;
@@ -80,81 +86,212 @@ body {
 }
 .chip.active { background: #3b5e2b; color: #fff; border-color: rgba(255,255,255,0.06); }
 
-/* content */
+/* Content */
 .content { padding: 12px; }
-
-#catalog-title { margin: 0 0 12px 0; }
-
-/* product grid */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 16px;
-  padding-bottom: 30px;
 }
 
+/* Card */
 .product-card {
   background: #111;
   border-radius: 12px;
   padding: 12px;
-  text-align: left;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   display:flex;
   flex-direction:column;
   gap:8px;
 }
 
-.product-card img {
+.main-photo {
   width: 100%;
-  height: 160px;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 8px;
+  cursor: pointer;
 }
 
-.product-card h3 { margin: 4px 0 0 0; font-size: 16px; color: #efe7dc; }
-.product-card p { margin: 0; font-size: 13px; color: rgba(255,255,255,0.8); }
+.thumbs {
+  display: flex;
+  justify-content: center;
+  margin-top: 6px;
+  gap: 4px;
+}
 
-.meta-row { display:flex; justify-content:space-between; align-items:center; margin-top:8px; }
+.thumb {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid #3b5e2b;
+}
 
-.buy-btn {
-  background-color: #3b5e2b;
-  color: #fff;
+h3 { margin: 6px 0; font-size: 1rem; color:#efe7dc; }
+.price { font-weight: 700; color: #9fb08a; margin: 4px 0; }
+
+/* Buttons */
+.buy-btn, .desc-btn {
+  background: #3b5e2b;
   border: none;
-  border-radius: 6px;
+  color: #fff;
   padding: 8px 12px;
+  border-radius: 6px;
   cursor: pointer;
   transition: 0.2s;
 }
-.buy-btn.gray { background: #333; color: #fff; }
-.buy-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
 
-/* modal */
+.buy-btn.gray { background: #333; }
+.buy-btn:hover, .desc-btn:hover { filter: brightness(1.1); }
+
+/* Description toggle (smooth) */
+.desc-text {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 8px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.28s ease;
+}
+.desc-text.expanded {
+  max-height: 600px; /* достатньо для опису; можна збільшити */
+}
+
+/* Modal */
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 999;
 }
-
 .modal.hidden { display: none; }
-
 .modal-content {
-  background: #121212;
-  padding: 16px;
-  border-radius: 12px;
-  width: 92%;
-  max-width: 560px;
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  width: 94%;
+  max-width: 700px;
+  position: relative;
+  text-align: center;
 }
 
-/* small screen adjustments */
+/* Gallery */
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+}
+.gallery-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.gallery-nav button {
+  background: #3b5e2b;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.close-btn {
+  position: absolute;
+  top: 8px; right: 12px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* Responsive tweaks */
 @media (max-width: 520px) {
-  .logo-img { width: 58px; }
-  .product-card img { height: 140px; }
-  .filter-col { min-width: 120px; }
+  .logo-img { width: 58px; height:58px; }
+  .product-grid { gap: 12px; }
+  .thumb { width: 34px; height:34px; }
+}
+.filterbar {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.filter-btn {
+  background: #3b5e2b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.filter-panel {
+  background: #1a1a1a;
+  border-top: 1px solid #3b5e2b;
+  padding: 10px;
+}
+
+.filter-panel.hidden { display: none; }
+
+.filter-group {
+  margin-bottom: 10px;
+}
+
+.price-range {
+  display: flex;
+  gap: 6px;
+}
+
+.price-range input {
+  width: 48%;
+  padding: 5px;
+}
+
+input, select {
+  background: #111;
+  color: #fff;
+  border: 1px solid #3b5e2b;
+  border-radius: 6px;
+}
+
+.chip {
+  background: #222;
+  border: 1px solid #3b5e2b;
+  color: #fff;
+  border-radius: 20px;
+  padding: 4px 10px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.chip.active {
+  background: #3b5e2b;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.qty {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.qty button {
+  background: #3b5e2b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 6px;
+  cursor: pointer;
 }
